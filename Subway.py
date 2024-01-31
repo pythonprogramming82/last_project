@@ -94,12 +94,10 @@ class User:
 
 
 
-        if sys.argv[1] == "createsuperuser":
-           print("enter fullname:")
-           fullname = input()
-           print("enter password:")
-           password=input()
-           commit
+    if sys.argv[1] == "createsuperuser":
+        print("enter fullname:")
+        print("enter password:")
+        password=input()
            
 
 
