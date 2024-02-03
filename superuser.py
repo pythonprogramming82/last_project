@@ -10,11 +10,10 @@ def Record_trip(self,username,source,destination,fare):
             trip.start_trip()
             trip.end_trip()
                 return "Trip recorded successfully!"
-    else:
+    elif:
         return "Insufficient balance on the metro card!"
-    else:
+    elif:
         return "User does not have a metro card!"
     else:
         return "User not found"
 print(metro_manager.Record_trip(user1.username,"A","B",5))
-inam dastrsi

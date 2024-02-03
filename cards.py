@@ -12,9 +12,12 @@ class MetroCard:
             amount += money
             if amount == MetroCard.cost:
                 amount -= MetroCard.cost
+                logging.basicConfig(filename="metro.log", level=logging.INFO)
+                logging.info("The single card was selected and the amount of 3500 Tomans was added to it")
                 return True
             else:
                 if amount < MetroCard.cost:
+                    print("your amount is low")
                     return False
             
     
@@ -23,6 +26,8 @@ class MetroCard:
             balance += money
             if balance > MetroCard.cost:
                 balance -= MetroCard.cost
+                logging.basicConfig(filename="metro.log", level=logging.INFO)
+                logging.info(f"The credit card was selected and the amount of {money} Tomans was added to it")
                 return True
             else:
                 return False
@@ -36,6 +41,20 @@ class MetroCard:
                 balance += money
                 if balance > MetroCard.cost:
                     balance -= MetroCard.cost
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The time_credit card was selected Its expiration date {expiration_date} and the amount of {money} Tomans was added to it")
                     return True
             else:
                 return False
+            
+    
+    def pickle_card(self):
+        pickled = pickle.dumps(self)
+        file = open("card.pk", "ab")
+        file.write(pickled)
+        file.close()
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("the card is pickle")
+
+MetroCard.pickle_card()
+

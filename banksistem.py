@@ -1,5 +1,6 @@
 from termcolor import colored
 import pickle
+import logging
 class User:
     def __init__(self, ID, name, age, gender):
         self.ID = ID
@@ -17,7 +18,11 @@ class User:
 
     def pickle_txt(self):
         pickled = pickle.dumps(self)
-        file = 
+        file = open("users.pk", "ab")
+        file.write(pickled)
+        file.close()
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("User information is pickle")
 
 class Bank(User):
     def __init__(self, ID, balance, password):
@@ -31,8 +36,12 @@ class Bank(User):
         if password == bank_password:
             self.balance += self.money
             print(colored("account balance has been update: ","green"),self.balance)
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"this user value {money} money in to the balance")
+
         else:
             print(colored("your password is wrong...","yellow"))
+        
     
     def money_out(self, money, password):
         self.money = money
@@ -40,17 +49,26 @@ class Bank(User):
         if password == bank_password:
             if self.money > self.balance:
                 print(colored("insufficient funds => your balance is: ","blue"),self.balance)
+                logging.basicConfig(filename="metro.log", level=logging.INFO)
+                logging.info("User account balance is low")
             
             else:
                 self.balance -= self.money
                 print(colored("account balance has been update: ","red"),self.balance)
+                logging.basicConfig(filename="metro.log", level=logging.INFO)
+                logging.info(f"this user value {money} money in to the balance")
+
         else:
             print(colored("your password is wrong...","yellow"))
+
     
     def show_balance(self, password):
         bank_password = 3345
         if password == bank_password:
             print(colored("account balance is: ","green"),self.balance)
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info("This user saw account balance")
+
         else:
             print(colored("youe password is wrong...","yellow"))
 
@@ -64,3 +82,6 @@ gender = input("\tpleas enter the your gender: ")
 balance = int(input("\tpleas enter your account balance: "))
 money = int(input("\tpleas enter your money: "))
 password = int(input("\tpleas enter the your password: "))
+
+
+User.pickle_txt()
