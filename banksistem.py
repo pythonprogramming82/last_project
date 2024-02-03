@@ -1,5 +1,5 @@
 from termcolor import colored
-
+import pickle
 class User:
     def __init__(self, ID, name, age, gender):
         self.ID = ID
@@ -10,9 +10,14 @@ class User:
     def show(self):
         return f"name is: {self.name} age is: {self.age} and gender is: {self.gender}"
     
+    
     def create_bank_account(self,id,balance=0):
         self.bank_account=Bank(id, balance, password)
 
+
+    def pickle_txt(self):
+        pickled = pickle.dumps(self)
+        file = 
 
 class Bank(User):
     def __init__(self, ID, balance, password):
