@@ -17,3 +17,4 @@ def Record_trip(self,username,source,destination,fare):
     else:
         return "User not found"
 print(metro_manager.Record_trip(user1.username,"A","B",5))
+inam dastrsi
