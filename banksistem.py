@@ -59,22 +59,3 @@ gender = input("\tpleas enter the your gender: ")
 balance = int(input("\tpleas enter your account balance: "))
 money = int(input("\tpleas enter your money: "))
 password = int(input("\tpleas enter the your password: "))
-
-obj = User(id, name, age, gender)
-obj2 = Bank(id, balance, password)
-
-while True:
-    print("1.money_in \n 2.money_out")
-    choice = int(input("select any option:"))\
-    
-    if choice == 1:
-        if obj.ID == obj2.ID:
-            obj2.money_in(money, password)
-
-    elif choice == 2:
-        if obj.ID == obj2.ID:
-            obj2.money_out(money, password)
-
-    else:
-        print(colored("your choice is wrong...","yellow"))
-        break
