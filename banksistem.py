@@ -1,12 +1,14 @@
 from termcolor import colored
 import pickle
 import logging
+
 class User:
     def __init__(self, ID, name, age, gender):
         self.ID = ID
         self.name = name
         self.age = age
         self.gender = gender
+        
 
     def show(self):
         return f"name is: {self.name} age is: {self.age} and gender is: {self.gender}"
@@ -23,6 +25,7 @@ class User:
         file.close()
         logging.basicConfig(filename="metro.log", level=logging.INFO)
         logging.info("User information is pickle")
+
 
 class Bank(User):
     def __init__(self, ID, balance, password):

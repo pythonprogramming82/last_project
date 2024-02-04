@@ -1,8 +1,7 @@
 class Trip:
-    def __init__(self, origin, destination, start_time):
+    def __init__(self, origin, destination):
         self.origin = origin
         self.destination = destination
-        self.start_time = start_time
         self.end_time = None
         self.cost = None
 
@@ -17,13 +16,12 @@ class Trip:
 
 
 cost_matrix = {
-    "a": {"b": 5000, "c": 8000},
-    "b": {"a": 5000, "c": 10000},
-    "c": {"a": 8000, "b": 10000}
+    "a": {"b": 5000, "star_time":10, "end_time":11},
+    "b": {"a": 10000, "star_time":10.30, "end_time":11.10},
+    "c": {"b": 8000, "star_time":11, "end_time":11.30},
+    "d": {"a":20000, "star_time":11.10, "end_time":12},
 }
 
-trip = Trip("a", "c", "2023-01-01 10:00:00")
+trip = Trip("a", "b")
 trip.calculate_cost(cost_matrix)
-trip.end_time("2023-01-01 11:00:00")
 
-print(f"Trip from {trip.origin} to {trip.destination}, star trip: {trip.start_time} until the end trip: {trip.end_time}, cost: {trip.cost}")
