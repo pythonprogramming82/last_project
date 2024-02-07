@@ -111,13 +111,17 @@ while True:
 
 
     elif choice == "4":
-            def create_superuser(self, username, password):
-            if username in self.superusers:
-                return "Username already exists!"
-            else:
-                self.superusers[username] = password
-                return "Superuser created successfully!"
-        
+        manager_id = int(input("pleas enter your id manager: "))
+        password = int(input("pleas enter the password: "))
+        fullname = input("pleas enter your full name: ")
+        if Manager.manager == manager_id and password == Manager.password_manager:
+            chose = input("1)add a trip\n2)change trip\npleas chose a number: ")
+            if chose == "1":
+                obj_manager = Manager(manager_id, fullname, password)
+                obj_manager.add_trip()
+            
+            elif chose == "2":
+                obj_manager.change_trip()
 
     else:
         print("your chose is wrong!pleas try again...")
