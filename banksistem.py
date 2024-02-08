@@ -1,7 +1,7 @@
 from termcolor import colored
 import pickle
 import logging
-
+from main import *
 class User:
     def __init__(self, ID, name, age, gender):
         self.ID = ID
@@ -76,15 +76,5 @@ class Bank(User):
             print(colored("youe password is wrong...","yellow"))
 
 
-print("your information:")
-id = int(input("\tpleas enter the youe ID: "))
-id_bank = int(input("\tpleas enter the id bank: "))
-name = input("\tpleas enter the your name: ")
-age = int(input("\tpleas enter the your age: "))
-gender = input("\tpleas enter the your gender: ")
-balance = int(input("\tpleas enter your account balance: "))
-money = int(input("\tpleas enter your money: "))
-password = int(input("\tpleas enter the your password: "))
-
-
-User.pickle_txt()
+obj = User(id, name, age, gender)
+obj.pickle_txt()
