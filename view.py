@@ -97,7 +97,7 @@ def chose_3():
                     print(colored("your balance card is: ", "blue"), amount_single)
 
                     #pickle the single cards
-                    string = f"credit card and thw balance is {balance_time}"
+                    string = f"single card and the balance is {balance_time}"
                     pickled = pickle.dumps(string)
                     file = open("cards.py", "ab")
                     file.write(pickled)
@@ -122,7 +122,7 @@ def chose_3():
                     print(colored("your balance card is: ", "blue"), balance_credit)
 
                     #pickle the credit cards
-                    string = f"single card and thw balance is {balance_credit}"
+                    string = f"credit card and the balance is {balance_credit}"
                     pickled = pickle.dumps(string)
                     file = open("cards.pk", "ab")
                     file.write(pickled)
@@ -155,7 +155,7 @@ def chose_3():
                     print("your expiration catd is: ", expiration_date)
 
                     #pickle the credit_time cards
-                    string = f"credit card and thw balance is {balance_time}"
+                    string = f"credit_time card and the balance is {balance_time}"
                     pickled = pickle.dumps(string)
                     file = open("cards.pk", "ab")
                     file.write(pickled)
@@ -216,10 +216,9 @@ def chose_4():
 
             elif chose == "4":
                 #read the file 
-                with open("cards.pk", "rb") as file:
-                    file = pickle.loads(file)
-                    file.read()
-                    file.close()
+                file = open("cards.pk", "rb")
+                file = pickle.load(file)
+                print(file)
 
 
 def manager():

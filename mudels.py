@@ -18,10 +18,10 @@ class Trip:
 
 
 cost_matrix = {
-    "a": {"b": 5000, "star_time":10, "end_time":11},
-    "b": {"a": 10000, "star_time":10.30, "end_time":11.10},
-    "c": {"b": 8000, "star_time":11, "end_time":11.30},
-    "d": {"a":20000, "star_time":11.10, "end_time":12},
+    "a": {"b": "tehran", "cost":5000, "star_time":10, "end_time":11},
+    "b": {"a": "karaj", "cost": 10000, "star_time":10.30, "end_time":11.10},
+    "c": {"b": "aslamshahr", "cost": 8000, "star_time":11, "end_time":11.30},
+    "d": {"a": "pasdaran", "cost": 20000, "star_time":11.10, "end_time":12},
 }
 
 #===========================(changetrip)====================================================
@@ -29,7 +29,8 @@ class ChangeTrip():
     def change_trip():
         trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
         if trip_chose == "1":
-            change = int(input("1)origin\n2)destination\n3)cost\n4)end_time\nWhich part of the trip do you want to change: "))
+            print("1)origin\n2)destination\n3)cost\n4)end_time")
+            change = int(input("Which part of the trip do you want to change: "))
             if change == 1:
                 origin = input("pleas enter the new origin: ")
                 cost_matrix["a"] = origin
@@ -51,6 +52,8 @@ class ChangeTrip():
 
 
         elif trip_chose == "2":
+            print("1)origin\n2)destination\n3)cost\n4)end_time")
+            change = int(input("Which part of the trip do you want to change: "))
             if change == 1:
                 origin = input("pleas enter the new origin: ")
                 cost_matrix["b"] = origin
@@ -72,6 +75,8 @@ class ChangeTrip():
 
 
         elif trip_chose == "3":
+            print("1)origin\n2)destination\n3)cost\n4)end_time")
+            change = int(input("Which part of the trip do you want to change: "))
             if change == 1:
                 origin = input("pleas enter the new origin: ")
                 cost_matrix["c"] = origin
@@ -92,6 +97,8 @@ class ChangeTrip():
                 print("your chose is wrong...")
 
         elif trip_chose == "4":
+            print("1)origin\n2)destination\n3)cost\n4)end_time")
+            change = int(input("Which part of the trip do you want to change: "))
             if change == 1:
                 origin = input("pleas enter the new origin: ")
                 cost_matrix["d"] = origin
@@ -102,7 +109,7 @@ class ChangeTrip():
 
             elif change == 3:
                 cost = int(input("pleas enter the new cost: "))
-                cost_matrix["d"]["cost"] = cost
+                cost_matrix["d"][""] = cost
 
             elif change == 4:
                 end_time = input("pleas enter the new end_time: ")
@@ -111,13 +118,9 @@ class ChangeTrip():
             else:
                 print("your chose is wrong...")
 
-#===========================(delettrip)==================================================
+# #===========================(delettrip)==================================================
 class DeletTrip():
     def delet_trip():
-        for i in cost_matrix.items():
-                print(i)
-
-
         print("You have 10 seconds to choose your trip")
 
 
