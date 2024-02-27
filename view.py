@@ -1,3 +1,4 @@
+import os
 from os import name, system
 import pickle
 import datetime
@@ -5,44 +6,41 @@ import time
 from mudels import *
 
 def deletpage():
-    if name == "nt":
-        system("cls")
+    if name == 'nt':
+        os.system('cls')
     else:
-        system("clear")
+        os.system('clear')
 
 
-ids = []
-passwords = []
 manager_id = []
 manager_password = []
 def chose_1():
-        passwords.append(int(input("pleas enter your password bank: ")))
-        ids.append(int(input("pleas enter your ID: ")))
-        name = input("pleas enter the your name: ")
-        age = int(input("pleas enter the your age: "))
-        gender = input("pleas enter the your gender: ")
+        while True:
+            id=int(input("pleas enter your ID: "))
+            password=input("pleas enter your password bank: ")
+            request=User.check(id,password)
+            if request == False:
+                print("wrong")
+                x=input("if re try 1 \n if register 2 ")
+                if x=="1":
+                    continue
+                elif x=="2":
+                    id=int(len(User.list_user)+1000)
+                    name=input("say yor name")
+                    password=input("say you pass")
+                    ml=input("if male = m \n if fmale = f")
+                    if ml.startswith("m"):
+                        gender=True
+                    else:
+                        gender=False
+                    x=User(id,name,password,gender)
 
-        #pickle user in file users.pk
-        string = f"name is: {name} age is: {age} and gender is: {gender}"
-        pickled = pickle.dumps(string)
-        file = open("users.pk", "ab")
-        file.write(pickled)
-        file.close()
+                    print(f"youare register your id is {id}")
+                    return x
+                else:
+                    return False
+            else:return request
 
-        #delet the page
-        time.sleep(1)
-        deletpage()
-        
-        #show information the user
-        
-        print(colored(f"name is: {name} age is: {age} and gender is: {gender}", "green"))
-        for i in ids:
-            ide = i
-        for  j in passwords:
-            passworde = j
-
-        print(colored(f"your id is {ide}", "blue"))
-        print(colored(f"your password is {passworde}", "blue"))
 
 
 def chose_2():

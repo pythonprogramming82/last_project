@@ -1,4 +1,6 @@
 from termcolor import colored
+
+
 #==============================(trip)=======================================
 class Trip:
     def __init__(self, origin, destination):
@@ -26,6 +28,7 @@ cost_matrix = {
 
 #===========================(changetrip)====================================================
 class ChangeTrip():
+
     def change_trip():
         trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
         if trip_chose == "1":
@@ -33,7 +36,8 @@ class ChangeTrip():
             change = int(input("Which part of the trip do you want to change: "))
             if change == 1:
                 origin = input("pleas enter the new origin: ")
-                cost_matrix["a"] = origin
+                cost_matrix["a"]= origin
+
 
             elif change == 2:
                 destination = input("pleas enter the new destination: ")
@@ -139,6 +143,39 @@ class DeletTrip():
 
         else:
             print("your chose is wrong!pleas try again...")
+
+
+class User():
+    list_user=[]
+
+    def __init__(self,ID:int,name:str,password,gender:bool):
+        self.ID=ID
+        self.name= name
+        self.password = password
+        self.gender = gender
+        User.list_user.append(self)
+    def __str__(self):
+        return self.ID
+
+    @staticmethod
+    def check(id,password):
+
+        if len(User.list_user) == 0 :
+            return False
+        else:
+
+            for x in User.list_user :
+
+                if x.ID==id:
+                    if x.password == password:
+
+                        return x
+                    else:
+
+                        return False
+                else:
+
+                    return False
 
 
 

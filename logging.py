@@ -1,8 +1,11 @@
 import logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - '%(levelname)s - %(message)s')
+import functools
+
+
+
 
 class Metro:
-    def __init__(self,name)
+    def __init__(self,name):
         self.name=name
         logging.info(f"Created a new metro system: {self.name}")
 
