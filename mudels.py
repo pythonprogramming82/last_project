@@ -1,5 +1,5 @@
 from termcolor import colored
-
+import pickle
 
 #==============================(trip)=======================================
 class Trip:
@@ -154,9 +154,11 @@ class User():
         self.password = password
         self.gender = gender
         User.list_user.append(self)
+
     def __str__(self):
         return self.ID
-
+    
+    
     @staticmethod
     def check(id,password):
 

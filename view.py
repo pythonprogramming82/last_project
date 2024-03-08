@@ -4,14 +4,68 @@ import pickle
 import datetime
 import time
 from mudels import *
-
+#================================================
 def deletpage():
     if name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
+#================================================
+#login check acount
+def check_login():
+    id = int(len(User.list_user)+1000)
+    name = input("pleas enter your name: ")
+    password=input("pleas enter the password: ")
+    ml=input("if male = m\nif fmale = f: ")
+    #pickle the users
+    string = f"your id{id}, your name{name}, your password{password}"
+    pickled = pickle.dumps(string)
+    file = open("users.pk", "ab")
+    file.write(pickled)
+    file.close()
+    #===========================================
+    if ml.startswith("m"):
+        gender=True
+    else:
+        gender=False
+    x=User(id,name,password,gender)
+    print(f"you are register your id is {id}")
+    return x
+#==========================================================================
+#managment_bank
+def bank_sistm():
+            password_bank = int(input("pleas enter the bank password: "))
+            balance = int(input("pleas enter your account balance: ")) 
+            deletpage()
+            print("1)money_in\n2)money_out\n3)show_balance")
+            choice = int(input("select any option:"))
+            if choice == 1:
+                    money = int(input("Please deposit the amount you want: "))
+                    balance += money
+                    print(f"Deposit successfully completed Your balance is {balance}")
+            
+            elif choice == 2:
+                money = int(input("Please picking up the amount you want: "))
+                password = int(input("pleas enter the password: "))
+                if password in password_bank:
+                    if money > balance:
+                        print(colored("insufficient funds => your balance is: ","blue"),balance)
+                    else:
+                        balance -= money
+                        print(colored("account balance has been update: ","red"),balance)
+                else:
+                    print(colored("your password is wrong...","yellow"))
 
+            elif choice == 3:
+                password = int(input("pleas enter the password: "))
+                if password in password_bank:
+                    print(f"your balance is {balance}")
+                else:
+                    print(colored("your password is wrong...","yellow"))
 
+            else:
+                print(colored("your chose is wrong...","yellow"))
+#=================================================================================
 manager_id = []
 manager_password = []
 def chose_1():
@@ -21,79 +75,73 @@ def chose_1():
             request=User.check(id,password)
             if request == False:
                 print("wrong")
-                x=input("if re try 1 \n if register 2 ")
-                if x=="1":
+                time.sleep(2)
+                deletpage()
+                x= input("if you want to try again enter the 1\nif you want the register enter 2: ")
+                if x == "1":
                     continue
-                elif x=="2":
-                    id=int(len(User.list_user)+1000)
-                    name=input("say yor name")
-                    password=input("say you pass")
-                    ml=input("if male = m \n if fmale = f")
+                elif x == "2":
+                    time.sleep(1)
+                    deletpage()
+                    id = int(len(User.list_user)+1000)
+                    name = input("pleas enter your name: ")
+                    password=input("pleas enter the password: ")
+                    ml=input("if male = m\nif fmale = f: ")
+                    #pickle the users
+                    string = f"your id{id}, your name{name}, your password{password}"
+                    pickled = pickle.dumps(string)
+                    file = open("users.pk", "ab")
+                    file.write(pickled)
+                    file.close()
+                    #===========================================
                     if ml.startswith("m"):
                         gender=True
                     else:
                         gender=False
                     x=User(id,name,password,gender)
 
-                    print(f"youare register your id is {id}")
+                    print(f"you are register your id is {id}")
                     return x
                 else:
                     return False
             else:return request
 
 
-
 def chose_2():
-        id_bank = int(input("pleas enter the youe ID bank: "))
-        balance = int(input("pleas enter your account balance: "))
-        money = int(input("pleas enter your money: "))
-        password = int(input("pleas enter the your password: "))
-        print("1)money_out\n2)show balance")
-        choice = int(input("select any option:"))
-        if choice == 1:
-                if id_bank in ids and password in passwords:
-                    if money > balance:
-                        print(colored("insufficient funds => your balance is: ","blue"),balance)
-                    else:
-                        balance -= money
-                        print(colored("account balance has been update: ","red"),balance)
-                
-                else:
-                    print(colored("your password and id is wrong...","yellow"))
-        
-        elif choice == 2:
-            if id_bank in ids and password in passwords:
-                print(colored("account balance is: ","green"),balance)
-
-
-            else:
-                print(colored("youe password and id is wrong...","yellow"))
-
+        if len(User.list_user) == 0:
+            print("your not login pleas first login and try again...")
+            time.sleep(2)
+            deletpage()
+            check_login()
+            time.sleep(2)
+            deletpage()
+            bank_sistm()
 
         else:
-            print("your chose is wrong pleas try again...")
+            bank_sistm()
+
         
-
-
 def chose_3():
+        card_list = []
         amount_single = 0
         balance_credit = 0
         balance_time = 0
         cost = 3500
-        id_user = int(input("pleas enter your id: "))
-        balance = int(input("pleas enter the balance: "))
-        if id_user in ids:
+        if len(card_list) == 0:
+            balance = int(input("pleas enter the balance: "))
+            password_bank = int(input("pleas enter the bank password: "))
+            deletpage()
             print("1)single\n2)credit\n3)time_credit")
             chose_card = input("pleas chose the card: ")
-
+            deletpage()
             if chose_card == "1":
                 password = int(input("pleas enter the bank password: "))
-                if password in passwords:
+                if password == password_bank:
                     balance -= 3500
                     amount_single += 3500
                     print(colored("account balance has been update: ","red"),balance)
-                    print(colored("your balance card is: ", "blue"), amount_single)
-
+                    card_list.append("single card")
+                    print(len(card_list))
                     #pickle the single cards
                     string = f"single card and the balance is {balance_time}"
                     pickled = pickle.dumps(string)
@@ -104,8 +152,6 @@ def chose_3():
 
                 else:
                     print("your password is wrong pleas try again...")
-                
-
                 time.sleep(3)
                 deletpage()
                 
@@ -113,11 +159,13 @@ def chose_3():
                 print(colored(f"your balance is {balance} Please charge your card", "green"))
                 money_card = int(input("Please select the amount you want to deposit to the card: "))
                 password = int(input("pleas enter the bank password: "))
-                if password in passwords:
+                if password == password_bank:
                     balance -= money_card
                     balance_credit += money_card
                     print(colored("account balance has been update: ","red"),balance)
                     print(colored("your balance card is: ", "blue"), balance_credit)
+                    string = f"you have credit card and balance is {balance_credit}"
+                    card_list.append(string)
 
                     #pickle the credit cards
                     string = f"credit card and the balance is {balance_credit}"
@@ -143,7 +191,7 @@ def chose_3():
                 print(colored(f"your balance is {balance} Please charge your card", "green"))
                 money_card = int(input("Please select the amount you want to deposit to the card: "))
                 password = int(input("pleas enter the bank password: "))
-                if password in passwords:
+                if password == password_bank:
                     current_day = datetime.now()
                     expiration_date = 2044
                     balance -= money_card
@@ -151,6 +199,8 @@ def chose_3():
                     print(colored("account balance has been update: ","red"),balance)
                     print(colored("your balance card is: ", "blue"), balance_time)
                     print("your expiration catd is: ", expiration_date)
+                    string = f"you have credit_time card and balance is {balance_credit} and expiratipn is {expiration_date}"
+                    card_list.append(string)
 
                     #pickle the credit_time cards
                     string = f"credit_time card and the balance is {balance_time}"
@@ -177,9 +227,14 @@ def chose_3():
             else:
                 print("your chose is wrong pleas try again...")
 
+        elif len(card_list) != 0:
+            for i in card_list:
+                print(f"you have a {i} pleas chose a your trip")
+            for i in cost_matrix.items():
+                print(i)
+
         else:
-            print("your id is wrong pleas try again...")
-            
+            print("wrong...")
 
 def chose_4():
         print("your dier manager pleas login the sistem")

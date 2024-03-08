@@ -1,7 +1,7 @@
 from view import *
 def enter():
     while True:
-        option = print("1)login & register\n2)Bank account management\n3)Metro travel registration\n4)Management")
+        print("1)login & register\n2)Bank account management\n3)Metro travel registration\n4)Management")
         choice = input("pleas enter the number your chose:")
         time.sleep(2)
         deletpage()
