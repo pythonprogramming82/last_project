@@ -4,7 +4,7 @@ import pickle
 import datetime
 import time
 from mudels import *
-#================================================
+#=======================================================
 def deletpage():
     if name == 'nt':
         os.system('cls')
@@ -66,8 +66,116 @@ def bank_sistm():
             else:
                 print(colored("your chose is wrong...","yellow"))
 #=================================================================================
-manager_id = []
-manager_password = []
+def delet_trip():
+    trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+    if trip_chose == "1":
+        del cost_matrix["a"]
+
+    elif trip_chose == "2":
+        del cost_matrix["b"]
+
+    elif trip_chose == "3":
+        del cost_matrix["c"]
+
+    elif trip_chose == "4":
+        del cost_matrix["d"]
+
+    else:
+        print("your chose is wrong!pleas try again...")
+#===============================================================================
+def change_trip():
+    trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+    if trip_chose == "1":
+        print("1)origin\n2)destination\n3)cost\n4)end_time")
+        change = int(input("Which part of the trip do you want to change: "))
+        if change == 1:
+            origin = input("pleas enter the new origin: ")
+            cost_matrix["a"]= origin
+
+
+        elif change == 2:
+            destination = input("pleas enter the new destination: ")
+            cost_matrix["a"]["b"] = destination
+
+        elif change == 3:
+            cost = int(input("pleas enter the new cost: "))
+            cost_matrix["a"]["cost"] = cost
+
+        elif change == 4:
+            end_time = input("pleas enter the new end_time: ")
+            cost_matrix["a"]["end_time"] = end_time
+
+        else:
+            print("your chose is wrong...")
+
+
+    elif trip_chose == "2":
+        print("1)origin\n2)destination\n3)cost\n4)end_time")
+        change = int(input("Which part of the trip do you want to change: "))
+        if change == 1:
+            origin = input("pleas enter the new origin: ")
+            cost_matrix["b"] = origin
+
+        elif change == 2:
+            destination = input("pleas enter the new destination: ")
+            cost_matrix["b"]["a"] = destination
+
+        elif change == 3:
+            cost = int(input("pleas enter the new cost: "))
+            cost_matrix["b"]["cost"] = cost
+
+        elif change == 4:
+            end_time = input("pleas enter the new end_time: ")
+            cost_matrix["b"]["end_time"] = end_time
+
+        else:
+            print("your chose is wrong...")
+
+
+    elif trip_chose == "3":
+        print("1)origin\n2)destination\n3)cost\n4)end_time")
+        change = int(input("Which part of the trip do you want to change: "))
+        if change == 1:
+            origin = input("pleas enter the new origin: ")
+            cost_matrix["c"] = origin
+
+        elif change == 2:
+            destination = input("pleas enter the new destination: ")
+            cost_matrix["c"]["b"] = destination
+
+        elif change == 3:
+            cost = int(input("pleas enter the new cost: "))
+            cost_matrix["c"]["cost"] = cost
+
+        elif change == 4:
+            end_time = input("pleas enter the new end_time: ")
+            cost_matrix["c"]["end_time"] = end_time
+
+        else:
+            print("your chose is wrong...")
+
+    elif trip_chose == "4":
+        print("1)origin\n2)destination\n3)cost\n4)end_time")
+        change = int(input("Which part of the trip do you want to change: "))
+        if change == 1:
+            origin = input("pleas enter the new origin: ")
+            cost_matrix["d"] = origin
+
+        elif change == 2:
+            destination = input("pleas enter the new destination: ")
+            cost_matrix["d"]["a"] = destination
+
+        elif change == 3:
+            cost = int(input("pleas enter the new cost: "))
+            cost_matrix["d"][""] = cost
+
+        elif change == 4:
+            end_time = input("pleas enter the new end_time: ")
+            cost_matrix["d"]["end_time"] = end_time
+
+        else:
+            print("your chose is wrong...")
+#================================================================================
 def chose_1():
         while True:
             id=int(input("pleas enter your ID: "))
@@ -120,9 +228,8 @@ def chose_2():
         else:
             bank_sistm()
 
-        
+card_list = []  
 def chose_3():
-        card_list = []
         amount_single = 0
         balance_credit = 0
         balance_time = 0
@@ -141,7 +248,9 @@ def chose_3():
                     amount_single += 3500
                     print(colored("account balance has been update: ","red"),balance)
                     card_list.append("single card")
-                    print(len(card_list))
+                    time.sleep(3)
+                    deletpage()
+
                     #pickle the single cards
                     string = f"single card and the balance is {balance_time}"
                     pickled = pickle.dumps(string)
@@ -166,6 +275,8 @@ def chose_3():
                     print(colored("your balance card is: ", "blue"), balance_credit)
                     string = f"you have credit card and balance is {balance_credit}"
                     card_list.append(string)
+                    time.sleep(3)
+                    deletpage()
 
                     #pickle the credit cards
                     string = f"credit card and the balance is {balance_credit}"
@@ -201,6 +312,8 @@ def chose_3():
                     print("your expiration catd is: ", expiration_date)
                     string = f"you have credit_time card and balance is {balance_credit} and expiratipn is {expiration_date}"
                     card_list.append(string)
+                    time.sleep(3)
+                    deletpage()
 
                     #pickle the credit_time cards
                     string = f"credit_time card and the balance is {balance_time}"
@@ -227,62 +340,14 @@ def chose_3():
             else:
                 print("your chose is wrong pleas try again...")
 
-        elif len(card_list) != 0:
-            for i in card_list:
-                print(f"you have a {i} pleas chose a your trip")
-            for i in cost_matrix.items():
-                print(i)
 
         else:
-            print("wrong...")
-
-def chose_4():
-        print("your dier manager pleas login the sistem")
-        manager()
-        print(colored("your login in the sistem:)", "blue"))
-        time.sleep(2)
-        deletpage()
-        id_manager = int(input("pleas enter your id manager: "))
-        password = int(input("pleas enter the manager password: "))
-        deletpage()
-        if id_manager in manager_id and password in manager_password:
-            chose = input("1)add a trip\n2)change trip\n3)delet trip\n4)show the cards\npleas chose a number: ")
+            for i in card_list:
+                print(f"you have a {i}")
+                time.sleep(2)
+                deletpage()
+            for i in cost_matrix.items():
+                print(i) 
+            trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+            deletpage()
             
-            if chose == "1":
-                for i in cost_matrix.items():
-                    print(i)
-                new_trip = dict(input("pleas enter your new trip: "))
-                cost_matrix.update(new_trip)
-
-
-            elif chose == "2":
-                for i in cost_matrix.items():
-                    print(i)
-                ChangeTrip.change_trip()
-
-
-            elif chose == "3":
-                for i in cost_matrix.items():
-                    print(i)
-                DeletTrip.delet_trip()
-
-
-            elif chose == "4":
-                #read the file 
-                file = open("cards.pk", "rb")
-                file = pickle.load(file)
-                print(file)
-
-
-def manager():
-    fullname = input("pleas enter your name: ")
-    manager_id.append(int(input("pleas enter your manager id: ")))
-    manager_password.append(int(input("pleas enter your manager password: ")))
-    for i in manager_password:
-        passworde = i
-
-    string = f"manager fullname is: {fullname} and password is: {passworde}"
-    pickled = pickle.dumps(string)
-    file = open("users.pk", "ab")
-    file.write(pickled)
-    file.close()
