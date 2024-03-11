@@ -20,17 +20,11 @@ class Trip:
 
 
 cost_matrix = {
-    "a": {"b": "tehran", "cost":5000, "star_time":10, "end_time":11},
-    "b": {"a": "karaj", "cost": 10000, "star_time":10.30, "end_time":11.10},
-    "c": {"b": "aslamshahr", "cost": 8000, "star_time":11, "end_time":11.30},
-    "d": {"a": "pasdaran", "cost": 20000, "star_time":11.10, "end_time":12},
+    "gholhak": {"b": "bime", "cost":5000, "star_time":10, "end_time":11},
+    "azadi": {"a": "gholhak", "cost": 10000, "star_time":10.30, "end_time":11.10},
+    "vardavard": {"b": "aslamshahr", "cost": 8000, "star_time":11, "end_time":11.30},
+    "sadr": {"a": "pasdaran", "cost": 20000, "star_time":11.10, "end_time":12},
 }
-
-#===========================(changetrip)====================================================
-
-
-# #===========================(delettrip)==================================================
-
 
 class User():
     list_user=[]

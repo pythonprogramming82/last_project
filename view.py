@@ -1,9 +1,11 @@
 import os
+import logging
 from os import name, system
 import pickle
 import datetime
 import time
 from mudels import *
+from datetime import datetime
 #=======================================================
 def deletpage():
     if name == 'nt':
@@ -11,6 +13,7 @@ def deletpage():
     else:
         os.system('clear')
 #================================================
+now = datetime.now()
 #login check acount
 def check_login():
     id = int(len(User.list_user)+1000)
@@ -30,6 +33,8 @@ def check_login():
         gender=False
     x=User(id,name,password,gender)
     print(f"you are register your id is {id}")
+    logging.basicConfig(filename="metro.log", level=logging.INFO)
+    logging.info(f"the user in width password {password} and id {id}: at time {now}")
     return x
 #==========================================================================
 #managment_bank
@@ -43,6 +48,8 @@ def bank_sistm():
                     money = int(input("Please deposit the amount you want: "))
                     balance += money
                     print(f"Deposit successfully completed Your balance is {balance}")
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user deposited {money} to account: at time {now}")
             
             elif choice == 2:
                 money = int(input("Please picking up the amount you want: "))
@@ -53,14 +60,24 @@ def bank_sistm():
                     else:
                         balance -= money
                         print(colored("account balance has been update: ","red"),balance)
+                        logging.basicConfig(filename="metro.log", level=logging.INFO)
+                        logging.info(f"The user widthdrew {money} to account: at time {now}")
+
                 else:
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user could not deposit money into her account due to incorrect password: at time {now}")
                     print(colored("your password is wrong...","yellow"))
 
             elif choice == 3:
                 password = int(input("pleas enter the password: "))
                 if password in password_bank:
                     print(f"your balance is {balance}")
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user took a balance from his account on the time: {now}")
+
                 else:
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"user could not check card balance due to incorrect password on the time: {now}")
                     print(colored("your password is wrong...","yellow"))
 
             else:
@@ -90,20 +107,28 @@ def change_trip():
         change = int(input("Which part of the trip do you want to change: "))
         if change == 1:
             origin = input("pleas enter the new origin: ")
-            cost_matrix["a"]= origin
+            cost_matrix["gholhak"]= origin
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the origin trip 1 on the time: {now}, and new origin is {origin}")
 
 
         elif change == 2:
             destination = input("pleas enter the new destination: ")
-            cost_matrix["a"]["b"] = destination
+            cost_matrix["gholhak"]["b"] = destination
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the destination trip 1 on the time: {now}, and new destination is {destination}")
 
         elif change == 3:
             cost = int(input("pleas enter the new cost: "))
-            cost_matrix["a"]["cost"] = cost
+            cost_matrix["gholhak"]["cost"] = cost
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the cost trip 1 on the time: {now}, and new cost is {cost}")
 
         elif change == 4:
             end_time = input("pleas enter the new end_time: ")
-            cost_matrix["a"]["end_time"] = end_time
+            cost_matrix["gholhak"]["end_time"] = end_time
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the end_time trip 1 on the time: {now}, and new end_time is {end_time}")
 
         else:
             print("your chose is wrong...")
@@ -209,6 +234,8 @@ def chose_1():
                     x=User(id,name,password,gender)
 
                     print(f"you are register your id is {id}")
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"the user in width password {password} and id {id}: at time {now}")
                     return x
                 else:
                     return False
@@ -218,6 +245,8 @@ def chose_1():
 def chose_2():
         if len(User.list_user) == 0:
             print("your not login pleas first login and try again...")
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info("The user could not access her bank account because she was not logged in")
             time.sleep(2)
             deletpage()
             check_login()
@@ -248,6 +277,8 @@ def chose_3():
                     amount_single += 3500
                     print(colored("account balance has been update: ","red"),balance)
                     card_list.append("single card")
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user bought a single card on the: {now}")
                     time.sleep(3)
                     deletpage()
 
@@ -275,6 +306,8 @@ def chose_3():
                     print(colored("your balance card is: ", "blue"), balance_credit)
                     string = f"you have credit card and balance is {balance_credit}"
                     card_list.append(string)
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user bought a credit card width balance {balance_credit} on the: {now}")
                     time.sleep(3)
                     deletpage()
 
@@ -312,6 +345,8 @@ def chose_3():
                     print("your expiration catd is: ", expiration_date)
                     string = f"you have credit_time card and balance is {balance_credit} and expiratipn is {expiration_date}"
                     card_list.append(string)
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"The user bought a credit_time card width balance {balance_credit} and expiration {expiration_date} on the: {now}")
                     time.sleep(3)
                     deletpage()
 

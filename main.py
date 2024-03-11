@@ -61,6 +61,8 @@ def managment():
             password = int(input("pleas enter your password managment: "))
             id = int(input("pleas enter your id managment: "))
             if password in password_managment and id in id_managment:
+                logging.basicConfig(filename="metro.log", level=logging.INFO)
+                logging.info(f"the manager logged into the system on the: {now}")
                 #pickle the managers
                 string = f"id manager is {id} and password is {password}"
                 pickled = pickle.dumps(string)
@@ -74,6 +76,8 @@ def managment():
                         print(i)
                     new_trip = dict(input("pleas enter your new trip: "))
                     cost_matrix.update(new_trip)
+                    logging.basicConfig(filename="metro.log", level=logging.INFO)
+                    logging.info(f"the manager add a trip {new_trip} to the list of trip on the time: {now}")
 
                 elif chose == "2":
                     for i in cost_matrix.items():
@@ -100,6 +104,8 @@ def managment():
         elif chose_1 == "2":
             password_managment.append(int(input("pleas enter the password new managment: ")))
             id_managment.append(int(input("pleas enter the id new managment: ")))
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"add the nwe manager on the: {now}")
             time.sleep(3)
 
         elif chose_1 == "3":
