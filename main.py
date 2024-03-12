@@ -57,6 +57,7 @@ def managment():
     while True:
         print("1)travel managment\n2)new managment\n3)Continue as a user")
         chose_1 = input("pleas chose your aption: ")
+        deletpage()
         if chose_1 == "1":
             password = int(input("pleas enter your password managment: "))
             id = int(input("pleas enter your id managment: "))
@@ -69,8 +70,12 @@ def managment():
                 file = open("users.pk", "ab")
                 file.write(pickled)
                 file.close()
+
+                time.sleep(2)
+                deletpage()
                 #===========================================================
                 chose = input("1)add a trip\n2)change trip\n3)delet trip\n4)show the cards\npleas chose a number: ")
+                deletpage()
                 if chose == "1":
                     for i in cost_matrix.items():
                         print(i)
@@ -107,6 +112,7 @@ def managment():
             logging.basicConfig(filename="metro.log", level=logging.INFO)
             logging.info(f"add the nwe manager on the: {now}")
             time.sleep(3)
+            deletpage()
 
         elif chose_1 == "3":
             deletpage()

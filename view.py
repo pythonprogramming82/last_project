@@ -34,7 +34,7 @@ def check_login():
     x=User(id,name,password,gender)
     print(f"you are register your id is {id}")
     logging.basicConfig(filename="metro.log", level=logging.INFO)
-    logging.info(f"the user in width password {password} and id {id}: at time {now}")
+    logging.info(f"the user login width password {password} and id {id}: at time {now}")
     return x
 #==========================================================================
 #managment_bank
@@ -44,6 +44,7 @@ def bank_sistm():
             deletpage()
             print("1)money_in\n2)money_out\n3)show_balance")
             choice = int(input("select any option:"))
+            deletpage()
             if choice == 1:
                     money = int(input("Please deposit the amount you want: "))
                     balance += money
@@ -54,7 +55,7 @@ def bank_sistm():
             elif choice == 2:
                 money = int(input("Please picking up the amount you want: "))
                 password = int(input("pleas enter the password: "))
-                if password in password_bank:
+                if password == password_bank:
                     if money > balance:
                         print(colored("insufficient funds => your balance is: ","blue"),balance)
                     else:
@@ -70,7 +71,7 @@ def bank_sistm():
 
             elif choice == 3:
                 password = int(input("pleas enter the password: "))
-                if password in password_bank:
+                if password == password_bank:
                     print(f"your balance is {balance}")
                     logging.basicConfig(filename="metro.log", level=logging.INFO)
                     logging.info(f"The user took a balance from his account on the time: {now}")
@@ -84,7 +85,7 @@ def bank_sistm():
                 print(colored("your chose is wrong...","yellow"))
 #=================================================================================
 def delet_trip():
-    trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+    trip_chose = input("1)gholhak to bime\n2)azadi to gholhak\n3)vardavard to aslamshahr\n4)sadr to pasdaran\npleas chose your trip: ")
     if trip_chose == "1":
         del cost_matrix["gholhak"]
         logging.basicConfig(filename="metro.log", level=logging.INFO)
@@ -109,10 +110,13 @@ def delet_trip():
         print("your chose is wrong!pleas try again...")
 #===============================================================================
 def change_trip():
-    trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+    trip_chose = input("1)gholhak to bime\n2)azadi to gholhak\n3)vardavard to aslamshahr\n4)sadr to pasdaran\npleas chose your trip: ")
+    deletpage()
     if trip_chose == "1":
         print("1)origin\n2)destination\n3)cost\n4)end_time")
         change = int(input("Which part of the trip do you want to change: "))
+        deletpage()
+        deletpage()
         if change == 1:
             origin = input("pleas enter the new origin: ")
             cost_matrix["gholhak"]= origin
@@ -145,6 +149,7 @@ def change_trip():
     elif trip_chose == "2":
         print("1)origin\n2)destination\n3)cost\n4)end_time")
         change = int(input("Which part of the trip do you want to change: "))
+        deletpage()
         if change == 1:
             origin = input("pleas enter the new origin: ")
             cost_matrix["azadi"] = origin
@@ -176,6 +181,7 @@ def change_trip():
     elif trip_chose == "3":
         print("1)origin\n2)destination\n3)cost\n4)end_time")
         change = int(input("Which part of the trip do you want to change: "))
+        deletpage()
         if change == 1:
             origin = input("pleas enter the new origin: ")
             cost_matrix["vardavard"] = origin
@@ -206,6 +212,7 @@ def change_trip():
     elif trip_chose == "4":
         print("1)origin\n2)destination\n3)cost\n4)end_time")
         change = int(input("Which part of the trip do you want to change: "))
+        deletpage()
         if change == 1:
             origin = input("pleas enter the new origin: ")
             cost_matrix["sadr"] = origin
@@ -267,7 +274,7 @@ def chose_1():
 
                     print(f"you are register your id is {id}")
                     logging.basicConfig(filename="metro.log", level=logging.INFO)
-                    logging.info(f"the user in width password {password} and id {id}: at time {now}")
+                    logging.info(f"the user login width password {password} and id {id}: at time {now}")
                     return x
                 else:
                     return False
@@ -415,6 +422,6 @@ def chose_3():
                 deletpage()
             for i in cost_matrix.items():
                 print(i) 
-            trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
+            trip_chose = input("1)gholhak to bime\n2)azadi to gholhak\n3)vardavard to aslamshahr\n4)sadr to pasdaran\npleas chose your trip: ")
             deletpage()
             
