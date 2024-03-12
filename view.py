@@ -86,16 +86,24 @@ def bank_sistm():
 def delet_trip():
     trip_chose = input("1)a to b\n2)b to a\n3)c to b\n4)d to a\npleas chose your trip: ")
     if trip_chose == "1":
-        del cost_matrix["a"]
+        del cost_matrix["gholhak"]
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("the manager delet the trip 1")
 
     elif trip_chose == "2":
-        del cost_matrix["b"]
+        del cost_matrix["azadi"]
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("the manager delet the trip 2")
 
     elif trip_chose == "3":
-        del cost_matrix["c"]
+        del cost_matrix["vardavard"]
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("the manager delet the trip 3")
 
     elif trip_chose == "4":
-        del cost_matrix["d"]
+        del cost_matrix["sadr"]
+        logging.basicConfig(filename="metro.log", level=logging.INFO)
+        logging.info("the manager delet the trip 4")
 
     else:
         print("your chose is wrong!pleas try again...")
@@ -139,19 +147,27 @@ def change_trip():
         change = int(input("Which part of the trip do you want to change: "))
         if change == 1:
             origin = input("pleas enter the new origin: ")
-            cost_matrix["b"] = origin
+            cost_matrix["azadi"] = origin
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the origin trip 2 on the time: {now}, and new origin is {origin}")
 
         elif change == 2:
             destination = input("pleas enter the new destination: ")
-            cost_matrix["b"]["a"] = destination
+            cost_matrix["azadi"]["a"] = destination
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the destination trip 2 on the time: {now}, and new destination is {destination}")
 
         elif change == 3:
             cost = int(input("pleas enter the new cost: "))
-            cost_matrix["b"]["cost"] = cost
+            cost_matrix["azadi"]["cost"] = cost
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the cost trip 2 on the time: {now}, and new cost is {cost}")
 
         elif change == 4:
             end_time = input("pleas enter the new end_time: ")
-            cost_matrix["b"]["end_time"] = end_time
+            cost_matrix["azadi"]["end_time"] = end_time
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the end_time trip 2 on the time: {now}, and new end_time is {end_time}")
 
         else:
             print("your chose is wrong...")
@@ -162,19 +178,27 @@ def change_trip():
         change = int(input("Which part of the trip do you want to change: "))
         if change == 1:
             origin = input("pleas enter the new origin: ")
-            cost_matrix["c"] = origin
+            cost_matrix["vardavard"] = origin
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the origin trip 3 on the time: {now}, and new origin is {origin}")
 
         elif change == 2:
             destination = input("pleas enter the new destination: ")
-            cost_matrix["c"]["b"] = destination
+            cost_matrix["vardavard"]["b"] = destination
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the destination trip 3 on the time: {now}, and new destination is {destination}")
 
         elif change == 3:
             cost = int(input("pleas enter the new cost: "))
-            cost_matrix["c"]["cost"] = cost
+            cost_matrix["vardavard"]["cost"] = cost
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the cost trip 3 on the time: {now}, and new cost is {cost}")
 
         elif change == 4:
             end_time = input("pleas enter the new end_time: ")
-            cost_matrix["c"]["end_time"] = end_time
+            cost_matrix["vardavard"]["end_time"] = end_time
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the end_time trip 3 on the time: {now}, and new end_time is {end_time}")
 
         else:
             print("your chose is wrong...")
@@ -184,19 +208,27 @@ def change_trip():
         change = int(input("Which part of the trip do you want to change: "))
         if change == 1:
             origin = input("pleas enter the new origin: ")
-            cost_matrix["d"] = origin
+            cost_matrix["sadr"] = origin
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the origin trip 4 on the time: {now}, and new origin is {origin}")
 
         elif change == 2:
             destination = input("pleas enter the new destination: ")
-            cost_matrix["d"]["a"] = destination
+            cost_matrix["sadr"]["a"] = destination
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the destination trip 4 on the time: {now}, and new destination is {destination}")
 
         elif change == 3:
             cost = int(input("pleas enter the new cost: "))
-            cost_matrix["d"][""] = cost
+            cost_matrix["sadr"]["cost"] = cost
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the cost trip 4 on the time: {now}, and new cost is {cost}")
 
         elif change == 4:
             end_time = input("pleas enter the new end_time: ")
-            cost_matrix["d"]["end_time"] = end_time
+            cost_matrix["sadr"]["end_time"] = end_time
+            logging.basicConfig(filename="metro.log", level=logging.INFO)
+            logging.info(f"the manager change the end_time trip 4 on the time: {now}, and new end_time is {end_time}")
 
         else:
             print("your chose is wrong...")
